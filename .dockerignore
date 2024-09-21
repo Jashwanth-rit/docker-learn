@@ -1,0 +1,4 @@
+node_modules
+# node module is ignored because it is large size
+#  by .txt we can ignore all the file with extention .txt
+.txt

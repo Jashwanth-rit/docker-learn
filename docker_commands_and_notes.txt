@@ -1,0 +1,64 @@
+
+# Building an Image:
+
+# Command to build a local Docker image using a parent image (e.g., Node.js).
+docker build -t basic-app .
+
+# Create a local Docker image with a version:
+docker build -t basic-app:v1 .
+
+# Running a Docker container with an image:
+# This command runs a container from a specified image and version.
+docker run --name nameof_container -p portof_docker:protof_node image_name:version_name
+
+# Creating a volume for Docker container:
+# This command creates a volume, allowing code changes to be reflected without rebuilding the image.
+docker run --name nameof_container -p portof_docker:protof_node --rm -v pathof_nodejsfile:/app image_name:version_name
+
+# Run a container in detached mode (-d flag runs in the background):
+docker run -d ubuntu
+
+# Running a container in foreground mode:
+docker run ubuntu
+
+# View logs of a running container:
+docker logs <container_id_or_name>
+
+# Prune (clean up) stopped containers:
+docker container prune -f
+
+# List all running containers:
+docker ps
+
+# Start a previously stopped container:
+docker start <container_id_or_name>
+
+# Execute a command inside a running container:
+docker exec -it <container_id_or_name> <command>
+
+# Create a new image from the current state of a container:
+docker commit [OPTIONS] <container_id_or_name> <repository>:<tag>
+
+# Stop a running container:
+docker stop [OPTIONS] <container_id_or_name>
+
+# Delete an image (if not in use):
+docker image rm image_name
+
+# Force delete an image (if in use):
+docker image rm image_name -f
+
+# Delete a stopped container:
+docker container rm container_name
+
+# Force delete a running container:
+docker container rm container_name -f
+
+# Dockerfile example for creating a Node.js-based image:
+
+# FROM node:latest - Base image (parent image)
+# COPY . . - Copy current directory contents into the Docker container
+# RUN npm install - Install required packages
+# EXPOSE 6500 - Expose port 6500 for external access
+# CMD ["node", "index.js"] - Command to run Node.js application
+
